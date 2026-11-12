@@ -1,0 +1,28 @@
+pipeline:
+  id: pipeline_marcosroldao_siteviagem_build_b9e2
+  name: pipeline_marcosroldao_siteviagem_build_b9e2
+  stages:
+    - name: Validate
+      id: validate
+      runtime: cloud
+      platform:
+        os: linux
+        arch: amd64
+      clone:
+        enabled: true
+      cache:
+        enabled: true
+      steps:
+        - name: Verify Repository
+          id: verify_repository
+          run:
+            shell: bash
+            script: |-
+              echo "Repository cloned successfully"
+              echo "Contents:"
+              ls -la
+              echo ""
+              echo "README.md content:"
+              cat README.md
+  tags:
+    onboarding: "true"
